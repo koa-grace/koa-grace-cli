@@ -1,0 +1,40 @@
+{
+  "name": "koa-grace-cli",
+  "version": "1.0.0",
+  "description": "A cli tool for getting started with koa-grace",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "bin": {
+    "koa-grace": "./bin/koa-grace.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/koa-grace/koa-grace-cli.git"
+  },
+  "keywords": [
+    "koa",
+    "koa-grace",
+    "nodejs",
+    "mvc"
+  ],
+  "author": "wilee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/koa-grace/koa-grace-cli/issues"
+  },
+  "homepage": "https://github.com/koa-grace/koa-grace-cli#readme",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "commander": "^2.9.0",
+    "elegant-spinner": "^1.0.1",
+    "log-update": "^1.0.2",
+    "prompt": "^1.0.0",
+    "shelljs": "^0.6.0"
+  },
+  "devDependencies": {
+    "ava": "^0.11.0",
+    "pify": "^2.3.0"
+  }
+}
