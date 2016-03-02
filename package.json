@@ -1,6 +1,6 @@
 {
   "name": "koa-grace-cli",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A cli tool for getting started with koa-grace",
   "main": "index.js",
   "scripts": {

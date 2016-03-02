@@ -22,7 +22,7 @@ program
   .description('A new generation Nodejs multi-app MVC framework')
   .version('0.0.1')
   .option('-i, --install', '在当前目录安装koa-grace服务')
-  .option('-u, --update', '更新koa-grace及koa-grace-cli')
+/*  .option('-u, --update', '更新koa-grace及koa-grace-cli')
   .option('-r, --restart', '重启koa-grace服务')
   .option('-p, --stop', '关闭koa-grace服务')
   .option('-s, --start', '启动koa-grace生产环境，如线上服务')
@@ -32,7 +32,7 @@ program
   .option('-lj, --log-static', '查看静态文件请求日志')
   .option('-ls, --log-server', '查看其他服务请求日志')
   .option('-lm, --log-mongo', '查看其他mongo请求日志')
-  .option('-le, --log-error', '查看错误日志')
+  .option('-le, --log-error', '查看错误日志')*/
   .parse(process.argv);
 
 // 如果不存在参数就返回help
@@ -74,6 +74,7 @@ function install(){
 
 function _gitPull(path, callback) {
   exec('git init', {
+    async: true,
     silent: true
   });
 
@@ -81,7 +82,7 @@ function _gitPull(path, callback) {
 
   let e = exec('git clone ' + path, {
     async: true,
-    silent: false
+    silent: true
   }, function(code, stdout, stderr) {
     _stopTimer();
 
