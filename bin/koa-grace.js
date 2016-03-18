@@ -2,20 +2,15 @@
 
 'use strict';
 
-let program = require('commander');
-let prompt = require('prompt');
-let chalk = require('chalk');
-let elegantSpinner = require('elegant-spinner');
-let logUpdate = require('log-update');
-let frame = elegantSpinner();
 require('shelljs/global');
 
-// prompt config
-prompt.message = "";
-prompt.delimiter = "";
+const program = require('commander');
+const chalk = require('chalk');
+const elegantSpinner = require('elegant-spinner');
+const logUpdate = require('log-update');
+const frame = elegantSpinner();
 
-// global interval
-let interval;
+const environment = require('../lib/environment');
 
 program
 // .command('koa-grace')
@@ -41,94 +36,7 @@ if (!process.argv.slice(2).length) {
 }
 
 if (program.install) {
-  install();
+  environment.install();
 } else if (program.u) {
 
-}
-
-function install(){
-  _checkGit();
-
-  let dir = 'koa-grace';
-
-  if (!test('-d', './koa-grace')) {
-
-    _gitPull('https://github.com/xiongwilee/koa-grace.git');
-
-  } else {
-
-    _reinstall(function(result) {
-
-      if (result.reinstall == 'Y') {
-
-        mv('koa-grace', 'koa-grace-' + Date.now());
-
-        _gitPull('https://github.com/xiongwilee/koa-grace.git');
-
-      } else {
-        console.error(chalk.red('\nerror: You can remove `koa-grace` dir and try again.'));
-      }
-    })
-  }
-}
-
-function _gitPull(path, callback) {
-  exec('git init', {
-    async: true,
-    silent: true
-  });
-
-  _setTimer("Cloning into 'koa-grace'...");
-
-  let e = exec('git clone ' + path, {
-    async: true,
-    silent: true
-  }, function(code, stdout, stderr) {
-    _stopTimer();
-
-    if (code !== 0) {
-      console.log(chalk.red.bold('Error! Try again'));
-      exit(1);
-    }
-
-    console.log(chalk.green.bold('Koa-grace clone Completed !'))
-
-    callback && callback();
-  }, '/dev/null');
-}
-
-function _setTimer(text) {
-  interval = setInterval(function() {
-    logUpdate(text + chalk.cyan.bold.dim(frame()));
-  }, 50);
-}
-
-function _stopTimer() {
-  clearInterval(interval);
-}
-
-function _reinstall(callback) {
-  prompt.start();
-  prompt.get([{
-    name: 'reinstall',
-    description: chalk.yellow('koa-grace path already exists, will you reinstall koa-grace? [Y/n] :'),
-    required: true
-  }], function(err, result) {
-    result = result || {};
-    callback(result);
-  });
-}
-
-function checkNpm() {
-  if (!which('npm')) {
-    console.log(chalk.red('Sorry, this script requires npm, please install npm first!'));
-    exit(1);
-  }
-}
-
-function _checkGit() {
-  if (!which('git')) {
-    console.log(chalk.red('Sorry, this script requires git, please install git first!'));
-    exit(1);
-  }
 }
