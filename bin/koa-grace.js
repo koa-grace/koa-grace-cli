@@ -2,19 +2,12 @@
 
 'use strict';
 
-require('shelljs/global');
-
 const program = require('commander');
-const chalk = require('chalk');
-const elegantSpinner = require('elegant-spinner');
-const logUpdate = require('log-update');
-const frame = elegantSpinner();
-
 const environment = require('../lib/environment');
 
 program
 // .command('koa-grace')
-  .description('A new generation Nodejs multi-app MVC framework')
+// .description('新一代基于koa的nodejs多应用MVC框架')
   .version('0.0.1')
   .option('-i, --install', '在当前目录安装koa-grace服务')
 /*  .option('-u, --update', '更新koa-grace及koa-grace-cli')
